@@ -1,0 +1,9 @@
+[project]
+name = "hypr-wpchanger"
+version = "1"
+description = "Simple wallpaper changer for Hyprland"
+
+dependencies = []
+
+[project.scripts]
+wpchanger = "main:main"
