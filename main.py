@@ -26,21 +26,15 @@ def set_wallpapers():
     monitors = get_monitors()
     wallpapers = get_random_wallpapers(len(monitors))
 
-    # Unloading wallpapers:
-    subprocess.run(["hyprctl", "hyprpaper", "unload", "all"])
-
-    # Preloading wallpapers:
-    for wallpaper in wallpapers:
-        subprocess.run(["hyprctl", "hyprpaper", "preload", str(wallpaper)])
+    # # Preloading wallpapers:
+    # for wallpaper in wallpapers:
+    #     subprocess.run(["hyprctl", "hyprpaper", "preload", str(wallpaper)])
 
     # Setting the wallpapers for each monitor:
     for monitor, wallpaper in zip(monitors, wallpapers):
-        subprocess.run([
-            "hyprctl",
-            "hyprpaper",
-            "wallpaper",
-            f"{monitor},{str(wallpaper)}"
-        ])
+        subprocess.run(
+            ["hyprctl", "hyprpaper", "reload", f"{monitor},{str(wallpaper)}"]
+        )
 
 
 def main():
